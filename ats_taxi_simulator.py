@@ -113,15 +113,16 @@ class DataSender():
             param = [{
                 u'vin': self.vin,
                 u'timestamp': utc_ts,
-                u'data': [ { u'channel': 'taxi_data',
+                u'data': [ { u'channel': 'location',
                              u'value': { u'lat': lat, 
                                          u'lon': lon,
-                                         u'occupancy': occupancy } } ]
+                                         u'alt': '0.0'
+                                     } } ]
             }]
 
             print "Sending: {}".format(param)
 
-            rvi.message(self.destination + "/logging/taxi_report", param)
+            rvi.message(self.destination + "/logging/report", param)
 
             self.transaction_id += 1
             try:
