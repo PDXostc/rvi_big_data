@@ -9,10 +9,7 @@
 #
 
 #
-# Device simulator reading traffic files provided by ATS.
-#
-# BE SURE TO SORT THE TRAFFIC FILES WITH sort_cabspottingdata.sh
-# BEFORE YOU RUN THIS SIMULATOR
+# Device simulator reading files from cabsportingdata.
 #
 import sys
 import getopt
@@ -236,6 +233,10 @@ if __name__ == "__main__":
         usage()
 
     rvi_url = remain[0]
+    if rvi_url[0:7] != 'http://':
+        print "No URL provided"
+        usage()
+
     file_names = remain[1:]
 
     for o, a in optlist:
